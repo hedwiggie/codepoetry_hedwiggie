@@ -204,7 +204,6 @@ eststo
 esttab using "output/test_allvars_pooledols.csv", keep (ethnic_han age tenure career term_yr promoted dismissed dead pmean_lag lpmean_lag) label star(* 0.10 ** 0.05 *** 0.01) replace
 eststo clear
 
-** only 240 obs, consider remove some controls. 
 
 foreach var in `depvar' {
 egen `var'_avg = mean(`var'), by(year)
@@ -212,7 +211,7 @@ gen `var'_diff= `var'-`var'_avg
 reg `var'_diff ethnic_han age tenure career term_yr promoted dismissed dead pmean_lag
 eststo
 }
-esttab using "output/test_allvars_diff.csv", keep (ethnic_han age tenure career term_yr promoted dismissed dead pmean_lag) label star(* 0.10 ** 0.05 *** 0.01) replace
+esttab using "output/test_allvars_diff.csv", keep (ethnic_han age tenure career term_yr promoted dismissed dead pmean_lag) label star(* 0.10 ** 0.05 *** 0.01) replace 
 eststo clear
 
 *** collapse into prov-name pair:
